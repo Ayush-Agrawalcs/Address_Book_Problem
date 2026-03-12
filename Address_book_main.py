@@ -30,11 +30,14 @@ print("--------------")
 
 book.add_contact(c1)
 book.display_contacts()
-# s=input("you want to edit y/n")
-# if(s.lower()=='y'):
-#     name=input("Enter the name of the contact you want to edit:")
-#     edit(book,name)
-# book.display_contacts()
+
+s=input("you want to edit y/n")
+if(s.lower()=='y'):
+    name=input("Enter the name of the contact you want to edit:")
+    edit(book,name)
+book.display_contacts()
+
+
 print("---------")
 s=input("you want to Delete y/n")
 if(s.lower()=='y'):
