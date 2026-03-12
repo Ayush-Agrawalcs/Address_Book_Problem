@@ -4,10 +4,13 @@ from Helper.Edit import edit
 
 from Helper.Delete import delete
 
-
-book = address_book()
-
+books={}
 while(True):
+    b=input("Enter the name of the address book you want to create:")
+    if b not in books:
+            books[b] = address_book(b)
+
+    book = books[b]
     First_Name=input("Enter your first name:")
     Last_Name=input("Enter your Last name:")
     Address=input("Enter your address:")
@@ -53,3 +56,6 @@ while(True):
     k=input("Enter N to Exit ")
     if k.lower()=='n':
         break
+for k,v in books.items():
+    print("Address Book Name:",k)
+    v.display_contacts()
