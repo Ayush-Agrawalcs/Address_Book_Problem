@@ -1,6 +1,8 @@
 from Address_Book import address_book
 from Contact import contact
-from Edit import edit
+from Helper.Edit import edit, delete
+
+from Helper.Delete import delete
 
 
 book = address_book()
@@ -28,8 +30,13 @@ print("--------------")
 
 book.add_contact(c1)
 book.display_contacts()
-s=input("you want to edit y/n")
+# s=input("you want to edit y/n")
+# if(s.lower()=='y'):
+#     name=input("Enter the name of the contact you want to edit:")
+#     edit(book,name)
+# book.display_contacts()
+print("---------")
+s=input("you want to Delete y/n")
 if(s.lower()=='y'):
     name=input("Enter the name of the contact you want to edit:")
-    edit(book,name)
-book.display_contacts()
+    delete(book,name)
