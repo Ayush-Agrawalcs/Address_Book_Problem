@@ -1,6 +1,6 @@
 from Address_Book import address_book
 from Contact import contact
-from Helper.Edit import edit, delete
+from Helper.Edit import edit
 
 from Helper.Delete import delete
 
