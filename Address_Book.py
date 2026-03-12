@@ -7,6 +7,10 @@ class address_book:
         self.contact=[]
         
     def add_contact(self,contact):
+        for con in self.contact:
+            if con.first_name==contact.first_name:
+                print("Contact with this name already exists.")
+                return
         self.contact.append(contact)
 
 
