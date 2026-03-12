@@ -32,17 +32,27 @@ class address_book:
 
 
 book = address_book()
+First_Name=input("Enter your first name:")
+Last_Name=input("Enter your Last name:")
+Address=input("Enter your address:")
+City=input("Enter your city:")
+State=input("Enter your state:")
+Zip=input("Enter your zip code:")
+Phone_Number=input("Enter your phone number:")
+Email=input("Enter your email:")
+
 
 c1 = contact(
-    "Ayush",
-    "Agrawal",
-    "FF Road",
-    "Firozabad",
-    "Uttar Pradesh",
-    "283203",
-    "9045735010",
-    "ayu@gmail.com"
+    First_Name,
+    Last_Name,
+    Address,
+    City,
+    State,
+    Zip,
+    Phone_Number,
+    Email
 )
+print("--------------")
 
 book.add_contact(c1)
 book.display_contacts()
