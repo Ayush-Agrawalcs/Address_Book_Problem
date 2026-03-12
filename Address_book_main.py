@@ -4,8 +4,7 @@ from Helper.Edit import edit
 
 from Helper.Delete import delete
 
-
-book = address_book()
+book = address_book("b1")
 First_Name=input("Enter your first name:")
 Last_Name=input("Enter your Last name:")
 Address=input("Enter your address:")
