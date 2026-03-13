@@ -37,10 +37,17 @@ while(True):
 y=input("Do you want to display all address books? (Y/N): ")
 if y.lower()=='y':
     books.display()
-y=input("Do you want to display all address books? (Y/N): ")
+
+y=input("Do you want to view a person on the basis of city and state (Y/N): ")
 if y.lower()=='y':
-    city=input("Enter city")
-    state=input("Enter state")
+    city=input("Enter city: ")
+    state=input("Enter state: ")
     books.search_person(city,state)
+
+y=input("Do you want to view a person on the basis of city and state (Y/N): ")
+if y.lower()=='y':
+    city=input("Enter city: ")
+    state=input("Enter state: ")
+    books.view_person(city,state)
 
 

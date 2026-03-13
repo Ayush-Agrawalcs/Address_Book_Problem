@@ -22,6 +22,19 @@ class address_book_manager:
             for i in v.contact:
                 if(i.city==city or i.state==state):
                     print(k,' : ',i.first_name)
+    
+    def view_person(self,city,state):
+        dict={}
+        for k,v in self.address_book.items():
+            dict_city={}
+            dict_state={}
+            for i in v.contact:
+                if(i.city==city):
+                    dict_city[i.city]=dict_city.get(i.city, []) + [i.first_name]
+                if(i.state==state):
+                    dict_state[i.state]=dict_state.get(i.state, []) + [i.first_name]
+            dict[k]=[dict_city,dict_state]
+            print(dict)
 
 
 
