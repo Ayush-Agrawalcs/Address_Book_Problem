@@ -49,6 +49,20 @@ view_person=input("Do you want to view a person on the basis of city and state (
 if view_person.lower()=='y':
     city=input("Enter city: ")
     state=input("Enter state: ")
-    books.view_person(city,state)
+    view_dict=books.view_person(city,state)
+    print(view_dict)
 
 
+view_person=input("Do you want to view a person on the basis of city and state (Y/N): ")
+if view_person.lower()=='y':
+    city=input("Enter city: ")
+    state=input("Enter state: ")
+    view_dict=books.view_person(city,state)
+    print(view_dict)
+
+
+count_contact=input("Do you want to count contacts in a city and state (Y/N): ")
+if count_contact.lower()=='y':
+    city=input("Enter city: ")
+    state=input("Enter state: ")
+    books.count_contact(city,state)

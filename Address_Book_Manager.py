@@ -34,7 +34,19 @@ class address_book_manager:
                 if(i.state==state):
                     dict_state[i.state]=dict_state.get(i.state, []) + [i.first_name]
             dict[k]=[dict_city,dict_state]
-            print(dict)
+            return dict
+    
+    def count_contact(self,city,state):
+        count_city=0
+        count_state=0
+        for k,v in self.address_book.items():
+            for i in v.contact:
+                if(i.city==city):
+                    count_city+=1
+                if(i.state==state):
+                    count_state+=1
+        print("Number of contacts in city",city,":",count_city)
+        print("Number of contacts in state",state,":",count_state)
 
 
 
