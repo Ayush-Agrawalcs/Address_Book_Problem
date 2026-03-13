@@ -16,6 +16,7 @@ while(True):
     print("2. Edit Contact")
     print("3. Delete Contact")
     print("4. sort the list")
+    print("5. sort the list on the basis of city,state,zip")
     print("0. Exit")
     choice = int(input("Enter your choice: "))
     match choice:
@@ -33,6 +34,14 @@ while(True):
         case 4:
             print("----------sort AddressBook--------------")
             book.sort_alphabetically()
+            book.display_contacts()
+        case 5:
+            print("----------sort AddressBook on the basis of city,state,zip--------------")
+            print("1. sort on the basis of city")
+            print("2. sort on the basis of state")
+            print("3. sort on the basis of zip")
+            k=int(input("Enter your choice: "))
+            book.sort_city_state_zip(k)
             book.display_contacts()
         case 0:
             break
