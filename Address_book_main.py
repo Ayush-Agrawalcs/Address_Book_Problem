@@ -1,38 +1,16 @@
 from Address_Book import address_book
+from Address_Book_Manager import address_book_manager
 from Contact import contact
-from Helper.Edit import edit
 
-from Helper.Delete import delete
+books=address_book_manager()
 
-books={}
 while(True):
     b=input("Enter the name of the address book you want to create:")
-    if b not in books:
-            books[b] = address_book(b)
+    if b not in books.address_book:
+            books.add_addressbook(b)
 
-    book = books[b]
-    First_Name=input("Enter your first name:")
-    Last_Name=input("Enter your Last name:")
-    Address=input("Enter your address:")
-    City=input("Enter your city:")
-    State=input("Enter your state:")
-    Zip=input("Enter your zip code:")
-    Phone_Number=input("Enter your phone number:")
-    Email=input("Enter your email:")
-
-
-    c1 = contact(
-        First_Name,
-        Last_Name,
-        Address,
-        City,
-        State,
-        Zip,
-        Phone_Number,
-        Email
-    )
-    book.add_contact(c1)
-    print("Contact added successfully!")
+    book = books.address_book[b]
+    book.create_contact()
     print("1. Display Contacts")
     print("2. Edit Contact")
     print("3. Delete Contact")
@@ -44,18 +22,20 @@ while(True):
             print("------------------------")
         case 2:
             name=input("Enter the name of the contact you want to edit:")
-            edit(book,name) 
+            book.edit(name) 
             book.display_contacts()
             print("------------------------")
         case 3:            
             name=input("Enter the name of the contact you want to delete:")
-            delete(book,name)
+            book.delete(name)
         case 0:
             break
 
     k=input("Enter N to Exit ")
     if k.lower()=='n':
         break
-for k,v in books.items():
-    print("Address Book Name:",k)
-    v.display_contacts()
+y=input("Do you want to display all address books? (Y/N): ")
+if y.lower()=='y':
+    books.display()
+
+
