@@ -1,4 +1,5 @@
 from Address_Book import address_book
+from Contact import contact
 class address_book_manager:
     def __init__(self):
         self.address_book={}
@@ -15,4 +16,13 @@ class address_book_manager:
             print("Address Book Name:",k)
             v.display_contacts()
             print("--------------------------")
+    
+    def search_person(self,city,state):
+        for k,v in self.address_book.items():
+            for i in v.contact:
+                if(i.city==city or i.state==state):
+                    print(k,' : ',i.first_name)
+
+
+
         
