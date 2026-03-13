@@ -5,11 +5,12 @@ from Contact import contact
 books=address_book_manager()
 
 while(True):
-    b=input("Enter the name of the address book you want to create:")
-    if b not in books.address_book:
-            books.add_addressbook(b)
+    name=input("Enter the name of the address book you want to create:")
+    if name not in books.address_book:
+           
+            books.add_addressbook(name)
 
-    book = books.address_book[b]
+    book = books.address_book[name]
     book.create_contact()
     print("1. Display Contacts")
     print("2. Edit Contact")
@@ -34,18 +35,18 @@ while(True):
     k=input("Enter N to Exit ")
     if k.lower()=='n':
         break
-y=input("Do you want to display all address books? (Y/N): ")
-if y.lower()=='y':
+display_address_book=input("Do you want to display all address books? (Y/N): ")
+if display_address_book.lower()=='y':
     books.display()
 
-y=input("Do you want to view a person on the basis of city and state (Y/N): ")
-if y.lower()=='y':
+display_search=input("Do you want to view a person on the basis of city and state (Y/N): ")
+if display_search.lower()=='y':
     city=input("Enter city: ")
     state=input("Enter state: ")
     books.search_person(city,state)
 
-y=input("Do you want to view a person on the basis of city and state (Y/N): ")
-if y.lower()=='y':
+view_person=input("Do you want to view a person on the basis of city and state (Y/N): ")
+if view_person.lower()=='y':
     city=input("Enter city: ")
     state=input("Enter state: ")
     books.view_person(city,state)
