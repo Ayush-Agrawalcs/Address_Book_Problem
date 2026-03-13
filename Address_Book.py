@@ -102,6 +102,8 @@ class address_book:
         else:
             print("user not found")
 
+    def sort_alphabetically(self):
+        self.contact.sort(key=lambda x: x.first_name)
 
 
 

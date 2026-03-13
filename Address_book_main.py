@@ -15,6 +15,7 @@ while(True):
     print("1. Display Contacts")
     print("2. Edit Contact")
     print("3. Delete Contact")
+    print("4. sort the list")
     print("0. Exit")
     choice = int(input("Enter your choice: "))
     match choice:
@@ -29,9 +30,12 @@ while(True):
         case 3:            
             name=input("Enter the name of the contact you want to delete:")
             book.delete(name)
+        case 4:
+            print("----------sort AddressBook--------------")
+            book.sort_alphabetically()
+            book.display_contacts()
         case 0:
             break
-
     k=input("Enter N to Exit ")
     if k.lower()=='n':
         break
