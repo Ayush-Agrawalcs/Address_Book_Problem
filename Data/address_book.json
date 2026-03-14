@@ -1,0 +1,24 @@
+{
+    "b2": [
+        {
+            "first_name": "a",
+            "last_name": "a",
+            "address": "a",
+            "city": "a",
+            "state": "a",
+            "zip": "a",
+            "phone_number": "a",
+            "email": "a"
+        },
+        {
+            "first_name": "c",
+            "last_name": "c",
+            "address": "c",
+            "city": "c",
+            "state": "c",
+            "zip": "c",
+            "phone_number": "c",
+            "email": "c"
+        }
+    ]
+}

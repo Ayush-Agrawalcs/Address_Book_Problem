@@ -1,5 +1,6 @@
 print("Welcome to the Address Book!")
 from Contact import contact
+import json
 
 class address_book:
     def __init__(self):
@@ -117,7 +118,7 @@ class address_book:
 
         # Save contacts to file
     def save_to_file(self, books,filename):
-        c=input("enter 1 to add text and 2 to add csv")
+        c=input("enter 1 to add text and 2 to add csv: ")
         if(c=='1'):
             s='|'
             ex=".txt"
@@ -136,7 +137,7 @@ class address_book:
     # Load contacts from file
     def load_from_file(self, books,filename):
         print(filename)
-        c=input("enter 1 to add text and 2 to add csv")
+        c=input("enter 1 to add text and 2 to add csv: ")
         if(c=='1'):
             s='|'
             ex=".txt"
@@ -164,7 +165,58 @@ class address_book:
 
         except FileNotFoundError:
             print("File not found!")
+    
+    
+    def save_to_json(self,books,filename):
+        address_books_dict = {}
+        for ab_name, book in books.address_book.items():
+            address_books_dict[ab_name] = []
+            for contact in book.contact:
+                data = {
+                    "first_name": contact.first_name,
+                    "last_name": contact.last_name,
+                    "address": contact.address,
+                    "city": contact.city,
+                    "state": contact.state,
+                    "zip": contact.zip,
+                    "phone_number": contact.phone_number,
+                    "email": contact.email
+                }
+                address_books_dict[ab_name].append(data)
+        with open(f"Data/{filename}", "w") as file:
+            json.dump(address_books_dict,file,indent=4)
+        
 
+        print("Contacts saved to file successfully!")
+    
+ 
 
+    def load_to_json(self, books, filename):
+        try:
+            with open(f"Data/{filename}", "r") as file:
+                datas = json.load(file)
+
+            for ab_name, b in datas.items():
+                books.add_addressbook(ab_name)
+                book = books.address_book[ab_name]
+
+                for data in b:
+                    new_contact = contact(
+                        data["first_name"],
+                        data["last_name"],
+                        data["address"],
+                        data["city"],
+                        data["state"],
+                        data["zip"],
+                        data["phone_number"],
+                        data["email"]
+                    )
+
+                    b.add_contact(new_contact)
+
+            print("Contacts loaded from JSON successfully!")
+
+        except FileNotFoundError:
+            print("File not found!")
 
 

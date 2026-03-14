@@ -11,9 +11,11 @@ while(True):
     print("5. Delete Contact")
     print("6. sort the list")
     print("7. sort the list on the basis of city,state,zip")
-    print("8. Add into the file")
-    print("9. Load from the file")
-    print("10. Exit")
+    print("8. Add into the csv and text file")
+    print("9. Load from the csv and file")
+    print("10. Add into the json file")
+    print("11. Load from the json file")
+    print("0. Exit")
     choice = int(input("Enter your choice: "))
     match choice:
         case 1:
@@ -56,11 +58,19 @@ while(True):
                 book.load_from_file(books,"address_book")
             else:
                 print("Initialize Address Book first.")
+        case 10:
+            if book:
+                book.save_to_json(books,"address_book.json")
+            else:
+                print("Initialize Address Book first.")
+        case 11:
+            if book:
+                book.load_to_json(books,"address_book.json")
+            else:
+                print("Initialize Address Book first.")
         case 0:
             break
-    # k=input("Enter N to Exit ")
-    # if k.lower()=='n':
-    #     break
+    
 display_address_book=input("Do you want to display all address books? (Y/N): ")
 if display_address_book.lower()=='y':
     books.display()
@@ -71,12 +81,12 @@ if display_search.lower()=='y':
     state=input("Enter state: ")
     books.search_person(city,state)
 
-view_person=input("Do you want to view a person on the basis of city and state (Y/N): ")
-if view_person.lower()=='y':
-    city=input("Enter city: ")
-    state=input("Enter state: ")
-    view_dict=books.view_person(city,state)
-    print(view_dict)
+# view_person=input("Do you want to view a person on the basis of city and state (Y/N): ")
+# if view_person.lower()=='y':
+#     city=input("Enter city: ")
+#     state=input("Enter state: ")
+#     view_dict=books.view_person(city,state)
+#     print(view_dict)
 
 
 view_person=input("Do you want to view a person on the basis of city and state (Y/N): ")
