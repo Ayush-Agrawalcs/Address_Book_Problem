@@ -14,7 +14,9 @@ while(True):
     print("7. sort the list on the basis of city,state,zip")
     print("8. Add into the file")
     print("9. Load from the file")
-    print("10. Exit")
+    print("10. Add into the json file")
+    print("11. Load from the json file")
+    print("0. Exit")
     choice = int(input("Enter your choice: "))
     match choice:
         case 1:
@@ -59,11 +61,25 @@ while(True):
                 book.load_from_file(filename)
             else:
                 print("Initialize Address Book first.")
+
+        case 10:
+            if book:
+                filename = next((f"{k}.json" for k,v in books.address_book.items() if v==book ),None)
+                book.save_to_json(filename)
+            else:
+                print("Initialize Address Book first.")
+        case 11:
+            if book:
+                filename = next((f"{k}.json" for k,v in books.address_book.items() if v==book ),None)
+                book.load_to_json(filename)
+            else:
+                print("Initialize Address Book first.")
+
+
         case 0:
             break
-    # k=input("Enter N to Exit ")
-    # if k.lower()=='n':
-    #     break
+  
+
 display_address_book=input("Do you want to display all address books? (Y/N): ")
 if display_address_book.lower()=='y':
     books.display()

@@ -1,5 +1,6 @@
 print("Welcome to the Address Book!")
 from Contact import contact
+import json
 
 class address_book:
     def __init__(self):
@@ -160,6 +161,53 @@ class address_book:
 
         except FileNotFoundError:
             print("File not found!")
+    
+
+    def save_to_json(self,filename):
+        address_books_dict = {}
+        for ab_name, address_book in self:
+            list=[]
+        for contact in self.contact:
+            data = {
+                "first_name": contact.first_name,
+                "last_name": contact.last_name,
+                "address": contact.address,
+                "city": contact.city,
+                "state": contact.state,
+                "zip": contact.zip,
+                "phone_number": contact.phone_number,
+                "email": contact.email
+            }
+            list.append(data)
+        with open(f"Data/{filename}", "w") as file:
+            json.dump(list,file,indent=4)
+        
+
+        print("Contacts saved to file successfully!")
+    
+    def load_to_json(self,filename):
+        try:
+            with open(f"Data/{filename}", "r") as file:
+                data_list = json.load(file)
+
+                for data in data_list:
+                    new_contact = contact(
+                        data["first_name"],
+                        data["last_name"],
+                        data["address"],
+                        data["city"],
+                        data["state"],
+                        data["zip"],
+                        data["phone_number"],
+                        data["email"]
+                    )
+                    self.add_contact(new_contact)
+
+            print("Contacts loaded from JSON successfully!")
+
+        except FileNotFoundError:
+            print("File not found!")
+    
 
 
 
