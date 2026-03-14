@@ -116,7 +116,7 @@ class address_book:
                 self.contact.sort(key=lambda x: x.zip)
 
         # Save contacts to file
-    def save_to_file(self, filename):
+    def save_to_file(self, books,filename):
         c=input("enter 1 to add text and 2 to add csv")
         if(c=='1'):
             s='|'
@@ -125,15 +125,17 @@ class address_book:
             s=","
             ex=".csv"
         with open(f"Data//{filename}{ex}", "w") as file:
-            for contact in self.contact:
-                data = f"{contact.first_name}{s}{contact.last_name}{s}{contact.address}{s}{contact.city}{s}{contact.state}{s}{contact.zip}{s}{contact.phone_number}{s}{contact.email}\n"
-                file.write(data)
+            for name,book in books.address_book.items():
+                for contact in book.contact:
+                    data = f"{name}{s}{contact.first_name}{s}{contact.last_name}{s}{contact.address}{s}{contact.city}{s}{contact.state}{s}{contact.zip}{s}{contact.phone_number}{s}{contact.email}\n"
+                    file.write(data)
 
         print("Contacts saved to file successfully!")
 
 
     # Load contacts from file
-    def load_from_file(self, filename):
+    def load_from_file(self, books,filename):
+        print(filename)
         c=input("enter 1 to add text and 2 to add csv")
         if(c=='1'):
             s='|'
@@ -146,13 +148,15 @@ class address_book:
                 for line in file:
                     data = line.strip().split(s)
 
-                    if len(data) == 8:
+                    if len(data) == 9:
+                        books.add_addressbook(data[0])
+                        book=books.address_book[data[0]]
                         new_contact = contact(
-                            data[0], data[1], data[2],
+                             data[1], data[2],
                             data[3], data[4], data[5],
-                            data[6], data[7]
+                            data[6], data[7],data[8]
                         )
-                        self.add_contact(new_contact)
+                        book.add_contact(new_contact)
                 file.seek(0)
                 print(file.read())
 

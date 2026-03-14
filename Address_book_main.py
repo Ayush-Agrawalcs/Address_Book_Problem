@@ -3,7 +3,6 @@ from Address_Book_Manager import address_book_manager
 from Contact import contact
 
 books=address_book_manager()
-
 while(True):
     print("1. Add New Book ")
     print("2. Add new Contact")
@@ -49,14 +48,12 @@ while(True):
             book.display_contacts()
         case 8:
             if book:
-                filename = next((k for k,v in books.address_book.items() if v==book ),None)
-                book.save_to_file(filename)
+                book.save_to_file(books,"address_book")
             else:
                 print("Initialize Address Book first.")
         case 9:
             if book:
-                filename = next((k for k,v in books.address_book.items() if v==book ),None)
-                book.load_from_file(filename)
+                book.load_from_file(books,"address_book")
             else:
                 print("Initialize Address Book first.")
         case 0:
