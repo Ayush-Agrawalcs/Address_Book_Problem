@@ -49,13 +49,13 @@ while(True):
             book.display_contacts()
         case 8:
             if book:
-                filename = next((f"{k}.txt" for k,v in books.address_book.items() if v==book ),None)
+                filename = next((k for k,v in books.address_book.items() if v==book ),None)
                 book.save_to_file(filename)
             else:
                 print("Initialize Address Book first.")
         case 9:
             if book:
-                filename = next((f"{k}.txt" for k,v in books.address_book.items() if v==book ),None)
+                filename = next((k for k,v in books.address_book.items() if v==book ),None)
                 book.load_from_file(filename)
             else:
                 print("Initialize Address Book first.")

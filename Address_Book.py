@@ -117,9 +117,16 @@ class address_book:
 
         # Save contacts to file
     def save_to_file(self, filename):
-        with open(f"Data//{filename}", "w") as file:
+        c=input("enter 1 to add text and 2 to add csv")
+        if(c=='1'):
+            s='|'
+            ex=".txt"
+        if(c=='2'):
+            s=","
+            ex=".csv"
+        with open(f"Data//{filename}{ex}", "w") as file:
             for contact in self.contact:
-                data = f"{contact.first_name}|{contact.last_name}|{contact.address}|{contact.city}|{contact.state}|{contact.zip}|{contact.phone_number}|{contact.email}\n"
+                data = f"{contact.first_name}{s}{contact.last_name}{s}{contact.address}{s}{contact.city}{s}{contact.state}{s}{contact.zip}{s}{contact.phone_number}{s}{contact.email}\n"
                 file.write(data)
 
         print("Contacts saved to file successfully!")
@@ -127,10 +134,17 @@ class address_book:
 
     # Load contacts from file
     def load_from_file(self, filename):
+        c=input("enter 1 to add text and 2 to add csv")
+        if(c=='1'):
+            s='|'
+            ex=".txt"
+        if(c=='2'):
+            s=","
+            ex=".csv"
         try:
-            with open(f"Data//{filename}", "r") as file:
+            with open(f"Data//{filename}{ex}", "r") as file:
                 for line in file:
-                    data = line.strip().split("|")
+                    data = line.strip().split(s)
 
                     if len(data) == 8:
                         new_contact = contact(
