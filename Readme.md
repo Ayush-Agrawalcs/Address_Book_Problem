@@ -26,13 +26,33 @@ The system also stores data in **JSON format**, so contacts can be saved and loa
 ## Project Files
 
 ```
-AddressBook/
+address_book_app/
 │
-├── Address_book_main.py
-├── Address_Book.py
-├── Address_Book_Manager.py
-├── Contact.py
-├── Data/
+├── app/                        
+│ 
+│   │
+│   ├── models/                # Data models
+│   │   ├── __init__.py
+│   │   ├── contact.py
+│   │   └── address_book.py
+│   │
+│   ├── services/              # Business logic
+│   │   ├── __init__.py
+│   │   └── address_book_manager.py
+│   │
+│   └── utils/                 # Utility/helper functions
+│       ├── __init__.py
+│       └── file_handler.py
+│       └── Searching.py
+│       └── Sorting.py       
+│              
+├── data/                      # Data storage
+│   ├── address_book.json
+│   ├── address_book.csv
+│   └── address_book.txt
+│
+├── main.py                    # Entry point (CLI)
+├── .gitignore
 └── README.md
 ```
 
@@ -43,7 +63,7 @@ AddressBook/
 Run the main program:
 
 ```
-python Address_book_main.py
+python main.py
 ```
 
 Follow the menu instructions to manage contacts.
