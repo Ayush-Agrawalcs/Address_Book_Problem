@@ -1,6 +1,6 @@
 
-from Address_Book_Manager import address_book_manager
-from Contact import contact
+from App.Service.Address_Book_Manager import address_book_manager
+from App.Models.Contact import contact
 
 books=address_book_manager()
 while(True):
@@ -80,13 +80,6 @@ if display_search.lower()=='y':
     city=input("Enter city: ")
     state=input("Enter state: ")
     books.search_person(city,state)
-
-# view_person=input("Do you want to view a person on the basis of city and state (Y/N): ")
-# if view_person.lower()=='y':
-#     city=input("Enter city: ")
-#     state=input("Enter state: ")
-#     view_dict=books.view_person(city,state)
-#     print(view_dict)
 
 
 view_person=input("Do you want to view a person on the basis of city and state (Y/N): ")

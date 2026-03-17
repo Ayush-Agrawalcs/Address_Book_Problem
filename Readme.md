@@ -2,71 +2,57 @@
 
 ## Introduction
 
-The Address Book Management System is a Python application used to store and manage contact information.
-It allows users to add, edit, delete, search, and sort contacts in an address book.
+Refactored Python application for managing multiple address books and contacts. Code divided into modular packages: Models (data classes), Service (business logic), utils (I/O), with clean imports and bug fixes.
 
-The system also stores data in **JSON format**, so contacts can be saved and loaded later.
-
----
+Supports persistent storage in TXT, CSV, JSON formats.
 
 ## Features
 
-* Add a new person to the address book
-* Edit contact details
-* Delete a contact
-* Add multiple contacts
-* Avoid duplicate contacts
-* Search contacts by city or state
-* Sort contacts by name, city, state, or zip
-* Save address books to JSON files
-* Load address books from JSON files
+* Multiple address books
+* Add/Edit/Delete contacts (dedup by first name)
+* Display/sort contacts (alpha, city/state/zip)
+* Search/view/count by city/state
+* Save/Load to/from TXT/CSV/JSON
+* Robust CLI with book selection
 
----
-
-## Project Files
+## Project Structure
 
 ```
 AddressBook/
-│
-├── Address_book_main.py
-├── Address_Book.py
-├── Address_Book_Manager.py
-├── Contact.py
-├── Data/
-└── README.md
+├── Address_book_main.py          # CLI entrypoint
+├── App/
+│   ├── Models/                   # Data classes
+│   │   ├── __init__.py
+│   │   ├── Contact.py
+│   │   └── Address_Book.py
+│   ├── Service/                  # Business logic
+│   │   ├── __init__.py
+│   │   └── Address_Book_Manager.py
+│   └── utils/                    # File I/O handlers
+│       ├── __init__.py
+│       └── file_handler.py
+├── Data/                         # Storage (address_book.txt/csv/json)
+├── TODO.md                       # Refactor progress
+├── Readme.md
+└── .gitignore
 ```
-
----
 
 ## How to Run
 
-Run the main program:
-
-```
+```bash
 python Address_book_main.py
 ```
 
-Follow the menu instructions to manage contacts.
+Follow interactive menu. Select book before contact ops/I/O.
 
----
+## Technologies
 
-## Technologies Used
-
-* Python
-* JSON (for storing data)
-* CSV (for storing data)
-* TEXT (for storing data)
-
----
+* Python 3 (stdlib: json, os, pathlib)
 
 ## Design Principles
 
-* **Modularity** – Code is divided into multiple files.
-* **Single Responsibility** – Each class has a specific task.
-* **Reusability** – Classes can be reused or extended.
+* **Modularity/SRP**: Separate concerns (data, logic, I/O)
+* **Relative imports** & packages
+* **Error handling** (try/except, checks)
+* **Tested** refactors preserve functionality
 
----
-
-## Conclusion
-
-This project demonstrates basic **Object-Oriented Programming concepts**, file handling, and data management using Python.

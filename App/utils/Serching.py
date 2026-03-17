@@ -1,29 +1,15 @@
-from Address_Book import address_book
-from Contact import contact
-class address_book_manager:
-    def __init__(self):
-        self.address_book={}
-        
-    def add_addressbook(self,name):
-        if name not in self.address_book:
-            self.address_book[name]=address_book()
-        else:
-            print("Address book with this name already exists.")  
-
-
-    def display(self):
-        for k,v in self.address_book.items():
-            print("Address Book Name:",k)
-            v.display_contacts()
-            print("--------------------------")
-    
+class Searching:
     def search_person(self,city,state):
+        '''
+        Search a person by city or state'''
         for k,v in self.address_book.items():
             for i in v.contact:
                 if(i.city==city or i.state==state):
                     print(k,' : ',i.first_name)
     
     def view_person(self,city,state):
+        '''
+        Maintain a dictionary to view a person by a city or state'''
         dict={}
         for k,v in self.address_book.items():
             dict_city={}
@@ -48,8 +34,3 @@ class address_book_manager:
         print("Number of contacts in city",city,":",count_city)
         print("Number of contacts in state",state,":",count_state)
     
-    
-   
-
-
-        
